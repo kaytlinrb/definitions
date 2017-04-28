@@ -1,0 +1,12 @@
+
+@word
+
+<ul>
+  <% @definitions.each() do |definition| %>
+    <li><%= definition.definition() %></li>
+  <% end %>
+</ul>
+
+<a href="/definition_form">Add a Definition</a>
+
+<a href="/">Add a New Word</a>
