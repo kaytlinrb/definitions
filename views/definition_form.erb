@@ -1,9 +1,10 @@
-<h1>Add Definition:</h1>
+<h1><%= @word.word() %></h1>
 
 <p>Add definition here:</p>
 
-<form action="/filled_form/definition" method="post">
-  <label for="definition_entry">Type a Definition:</label>
-  <input id="definition_entry" name="definition_entry" type="text">
+<form action="/word/<%= @word.id() %>/definitions/" method="post">
+  <input type="hidden" name="word_id" value="<%= @word.id() %>">
+  <label for="definition">Type a Definition:</label>
+  <input id="definition" name="definition" type="text">
   <button type="submit">Add Definition</button>
 </form>

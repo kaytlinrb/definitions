@@ -9,11 +9,11 @@ get('/') do
   erb(:index)
 end
 
-get('/word_form') do
+get('/word/new') do
   erb(:word_form)
 end
 
-post('/filled_form') do
+post('/words') do
   input = params.fetch('word_entry')
   @words = Word.new({:word =>input})
   @words.save()
@@ -22,18 +22,23 @@ post('/filled_form') do
 end
 
 get('/words/:id') do
+  @words = Word.all()
+  @word = Word.find(params.fetch('id').to_i())
+  @definitions = Definition.all()
   erb(:definition_page)
 end
 
-get('/definition_form') do
+get('/word/:id/definition/') do
+  @word = Word.find(params.fetch('id').to_i())
   erb(:definition_form)
 end
 
-post('/filled_form/definition') do
-  @word = Word.find(params.fetch('id').to_i())
-  input = params.fetch('definition_entry')
-  @definitions = Definition.new({:definition =>input})
-  @definitions.save()
-  @definitions = Definition.all
+post('/word/:id/definitions/') do
+definition_input = params.fetch('definition')
+@definition = Definition.new({:definition => definition_input})
+@definition.save()
+@word = Word.find(params.fetch('id').to_i())
+@word.add_definition(@definition)
+@definitions = Definition.all()
   erb(:definition_page)
 end

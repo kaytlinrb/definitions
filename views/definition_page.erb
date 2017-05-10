@@ -1,12 +1,15 @@
 
-@word
-
+<h3>Definitions for</h3>
+<hr>
+<h1><%= @word.word() %></h1>
+<hr>
 <ul>
-  <% @definitions.each() do |definition| %>
-    <li><%= definition.definition() %></li>
-  <% end %>
+  <% @word.definition().each() do |definition| %>
+  <li> <%=  @word.definition() %></li>
+  <% end  %>
 </ul>
+<hr>
 
-<a href="/definition_form">Add a Definition</a>
+<a href="/word/<%= @word.id() %>/definition/">Add a Definition</a>
 
-<a href="/">Add a New Word</a>
+<a href="/">Back to Words</a>

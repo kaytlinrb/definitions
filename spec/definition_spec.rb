@@ -29,7 +29,7 @@ describe('Definition') do
       expect(Definition.all()).to(eq([test_definition]))
     end
   end
-  
+
   describe(".clear") do
     it ("clears words array") do
       test_definition = Definition.new ({:definition => "offering nothing that is stimulating or challenging"})
@@ -43,9 +43,7 @@ describe('Definition') do
     it ("returns definition by using id") do
       test_definition = Definition.new ({:definition => "offering nothing that is stimulating or challenging"})
       test_definition.save()
-      test_definition2 = Definition.new ({:definition => "soothsayer"})
-      test_word2.save()
-      expect(Definition.find(2)).to(eq(test_definition2))
+      expect(Definition.find(1)).to(eq(test_definition))
     end
   end
 end
